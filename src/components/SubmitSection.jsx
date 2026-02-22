@@ -7,6 +7,9 @@ export default function SubmitSection({ verifiedEmails, addToast }) {
     const [loading, setLoading] = useState(false);
     const count = verifiedEmails.length;
 
+    const dev = 'dev';
+
+    const url = dev === 'dev' ? 'https://form-backend-qlqu.onrender.com' : 'http://localhost:5000';
     const handleSubmit = async () => {
         if (count === 0) {
             addToast({ type: 'error', title: 'No Users Selected', message: 'Please verify at least one user before submitting.' });
@@ -14,7 +17,7 @@ export default function SubmitSection({ verifiedEmails, addToast }) {
         }
         setLoading(true);
         try {
-            const res = await fetch('/api/send', {
+            const res = await fetch(`${url}/api/send`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ selectedEmails: verifiedEmails }),
