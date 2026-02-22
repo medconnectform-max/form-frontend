@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+const dev = 'dev';
 
 export default defineConfig({
     plugins: [
@@ -12,7 +13,7 @@ export default defineConfig({
         port: 5173,
         proxy: {
             '/api': {
-                target: 'http://192.168.0.159:5000',
+                target: dev == 'dev' ? 'https://form-backend-qlqu.onrender.com' : 'http://localhost:5000',
                 changeOrigin: true,
             },
         },
