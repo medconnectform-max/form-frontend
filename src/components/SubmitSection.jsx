@@ -7,9 +7,9 @@ export default function SubmitSection({ verifiedEmails, addToast }) {
     const [loading, setLoading] = useState(false);
     const count = verifiedEmails.length;
 
-    const dev = 'dev';
+    const dev = 'prod';
 
-    const url = dev === 'dev' ? 'https://form-backend-qlqu.onrender.com' : 'http://localhost:5000';
+    const url = dev === 'prod' ? 'https://form-backend-qlqu.onrender.com' : 'http://localhost:5000';
     const handleSubmit = async () => {
         if (count === 0) {
             addToast({ type: 'error', title: 'No Users Selected', message: 'Please verify at least one user before submitting.' });
